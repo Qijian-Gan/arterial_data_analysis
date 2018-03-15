@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<h2> <center>Intersection Sensor Status in Pasadena </center> </h2>
+<h4><center><IMG SRC="http://icons.iconarchive.com/icons/icons-land/vista-map-markers/24/Map-Marker-Marker-Outside-Chartreuse-icon.png" ALT="Good" WIDTH=24 HEIGHT=24> Working
+    <IMG SRC="http://icons.iconarchive.com/icons/icons-land/vista-map-markers/24/Map-Marker-Marker-Outside-Azure-icon.png" ALT="Good" WIDTH=24 HEIGHT=24> Partially Working
+    <IMG SRC="http://icons.iconarchive.com/icons/icons-land/vista-map-markers/24/Map-Marker-Marker-Outside-Pink-icon.png" ALT="Good" WIDTH=24 HEIGHT=24> Not Working
+</center></h4>
+<script id="source" language="javascript" type="text/javascript">
+   google.charts.load("current", {
+      "packages":["map"],
+      "mapsApiKey": "AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY"
+   });
+   google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+     var arrayGoodOrBad=[
+       ['Lat', 'Long', 'Name','Color'],
+       [37.4232, -122.0853, 'Work','green'],
+       [37.4289, -122.1697, 'University','pink'],
+       [37.6153, -122.3900, 'Airport','blue'],
+       [37.4422, -122.1731, 'Shopping','blue']
+     ]
+     var data = google.visualization.arrayToDataTable(arrayGoodOrBad);
+     var url = 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/';
+     var options = {
+       showTooltip: true,
+       showInfoWindow: true,
+       useMapTypeControl: true,
+       icons: {
+         green: {
+           normal:   url + 'Map-Marker-Marker-Outside-Chartreuse-icon.png',
+           selected: url + 'Map-Marker-Marker-Outside-Chartreuse-icon.png'
+         },
+         pink: {
+           normal:   url + 'Map-Marker-Marker-Outside-Pink-icon.png',
+           selected: url + 'Map-Marker-Marker-Outside-Pink-icon.png',
+         },
+         blue: {
+           normal:   url + 'Map-Marker-Marker-Outside-Azure-icon.png',
+           selected: url + 'Map-Marker-Marker-Outside-Azure-icon.png'
+         }
+       }
+     };
+     var map = new google.visualization.Map(document.getElementById('map'));
+     map.draw(data, options);
+   };
+    </script>
+<style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+<div id="map"></div>
+</body>
+</html>
