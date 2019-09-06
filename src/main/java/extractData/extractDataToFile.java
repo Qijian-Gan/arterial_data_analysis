@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.lang.reflect.Field;
 import java.util.Calendar;
+import extractData.getDataFromDatabase.ClusterDetectorData;
+import config.detectorConfig.DetectorProperty;
 
 /**
  * Created by Qijian_Gan on 9/12/2017.
@@ -560,5 +562,27 @@ public class extractDataToFile{
         }
     }
 
+
+    public static void outputClusterDataToFile(int timestep,List<ClusterDetectorData> clusterDetectorDataList, File fileName) throws IOException {
+
+        FileWriter fw = new FileWriter(fileName,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        String str;
+
+        // Get the header
+        if(timestep==0) {
+            str = "Detector ID,Time,Count(#/5min), Volume(vph),Occupancy(%),Speed(??),Delay,Stops,Movement\n";
+            bw.write(str);
+        }
+
+        for(int i=0;i<clusterDetectorDataList.size();i++){
+            ClusterDetectorData clusterDetectorData=clusterDetectorDataList.get(i);
+            str=clusterDetectorData.DetectorID+","+clusterDetectorData.Time+","+clusterDetectorData.Count+","+
+                    clusterDetectorData.Volume+","+clusterDetectorData.Occupancy+","+clusterDetectorData.Speed+","+
+                    clusterDetectorData.Delay+","+clusterDetectorData.Stops+","+clusterDetectorData.Movement+"\n";
+            bw.write(str);
+        }
+        bw.close();
+    }
 }
 

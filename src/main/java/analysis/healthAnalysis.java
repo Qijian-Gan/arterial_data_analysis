@@ -379,4 +379,6 @@ public class healthAnalysis {
         double missingRate= Math.max(0,(numOfInterval-curNumOfInterval)*100.0/numOfInterval); // Avoid negative values
         return missingRate;
     }
+
+
 }

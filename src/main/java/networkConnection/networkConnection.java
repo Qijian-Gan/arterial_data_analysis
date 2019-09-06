@@ -1,7 +1,5 @@
 package networkConnection;
 
-import org.jfree.io.FileUtilities;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;

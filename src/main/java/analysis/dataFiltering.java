@@ -144,9 +144,9 @@ public class dataFiltering {
                 // If no samples
                 if(i==0){
                     // If it is the first data point, set it to be the first value of dataInput
-                    dataOutput[i][1]=dataInput[0][0];
-                    dataOutput[i][2]=dataInput[0][1];
-                    dataOutput[i][3]=dataInput[0][2];
+                    dataOutput[i][1]=dataInput[0][1];
+                    dataOutput[i][2]=dataInput[0][2];
+                    dataOutput[i][3]=dataInput[0][3];
                 }else{
                     double [] tmpFlow;
                     double [] tmpOcc;
